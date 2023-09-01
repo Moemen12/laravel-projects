@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\EventResource;
 use App\Http\Traits\CanLoadRelationships;
 use App\Models\Event;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -19,6 +18,11 @@ class EventController extends Controller
 
 
      private array $relations = ['user','attendees','attendees.user'];
+
+     public function __construct()
+     {
+        $this->middleware('auth:sanctum')->except(['index','show']);
+     }
 
     public function index()
     {
@@ -40,7 +44,7 @@ class EventController extends Controller
                 'start_time' => 'date|required',
                 'end_time' => 'date|required|after:start_time'
             ]),
-            'user_id' => 1
+            'user_id' => request()->user()->id
         ]);
 
         return new EventResource($this->loadRelationships($event));
