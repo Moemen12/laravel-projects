@@ -11,6 +11,9 @@ class Poll extends Model
     use HasFactory;
 
 
+    protected $fillable =['title'];
+
+
     public function options(): HasMany
     {
         return $this->hasMany(Option::class);
