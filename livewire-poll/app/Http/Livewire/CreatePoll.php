@@ -61,6 +61,7 @@ class CreatePoll extends Component
             $poll->options()->create(['name'=>$optionName]);
         }
 
+        $this->emit('pollCreated');
 
        // Second Method 
 
