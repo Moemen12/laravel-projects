@@ -14,4 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('jobs', JobController::class)->only(['index']);
+// Route::get('', fn() => redirect()->route('jobs.index'));
+
+
+
+Route::get('',fn()=>to_route('jobs.index'));
+
+Route::resource('jobs', JobController::class)->only(['index','show']);
