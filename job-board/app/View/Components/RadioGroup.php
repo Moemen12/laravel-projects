@@ -6,13 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class LinkButton extends Component
+class RadioGroup extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public $href)
+    public function __construct(public string $name,public array $options)
     {
+        //
     }
 
     /**
@@ -20,6 +21,6 @@ class LinkButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.link-button');
+        return view('components.radio-group');
     }
 }

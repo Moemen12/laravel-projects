@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Job extends Component
+class JobCard extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public $job)
     {
-        //
+        
     }
 
     /**
@@ -21,6 +21,6 @@ class Job extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.job');
+        return view('components.job-card');
     }
 }

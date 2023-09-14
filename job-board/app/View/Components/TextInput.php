@@ -6,13 +6,19 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class LinkButton extends Component
+class TextInput extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public $href)
+    public function __construct(
+        public ?string $value= null,
+        public ?string $name= null,
+        public ?string $placeholder= null,
+        public ?string $formId=null
+    )
     {
+        //
     }
 
     /**
@@ -20,6 +26,6 @@ class LinkButton extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.link-button');
+        return view('components.text-input');
     }
 }
